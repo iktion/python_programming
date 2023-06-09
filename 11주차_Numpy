@@ -1,0 +1,3766 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/iktion/python_programming/blob/main/11%EC%A3%BC%EC%B0%A8_Numpy\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "601e8e36",
+      "metadata": {
+        "id": "601e8e36"
+      },
+      "source": [
+        "numpy는 수학적 연산을 위해 쓰이는 패키지\n",
+        "\n",
+        "매트릭스 곱, 합, 잘라 쓰기 등 연산 등 전반적으로 쓰이는 패키지\n",
+        "\n",
+        "numpy.org 의 getting started 로 수업 진행"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "id": "2e74bd4a",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2e74bd4a",
+        "outputId": "f1c58355-1d9f-46dc-c989-dc0a47d8139b"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/\n",
+            "Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (1.22.4)\n"
+          ]
+        }
+      ],
+      "source": [
+        "!pip install numpy"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "id": "74133250",
+      "metadata": {
+        "id": "74133250"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 129,
+      "id": "40d8655f",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "40d8655f",
+        "outputId": "ffba47e3-a957-4298-8fe4-c42485eaff1e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "numpy.ndarray"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 129
+        }
+      ],
+      "source": [
+        "a = np.arange(6)\n",
+        "type(b)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 130,
+      "id": "7cbac43d",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7cbac43d",
+        "outputId": "7533e1eb-5d0a-4fee-9cfc-b96b189b41ab"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0, 1, 2, 3, 4, 5])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 130
+        }
+      ],
+      "source": [
+        "a"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 132,
+      "id": "894beb9f",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "894beb9f",
+        "outputId": "06310d85-c9f2-48a4-c86f-f4be1d383f85"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 132
+        }
+      ],
+      "source": [
+        "a[1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "c39f7a41",
+      "metadata": {
+        "id": "c39f7a41"
+      },
+      "outputs": [],
+      "source": [
+        "a[:]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 133,
+      "id": "2a696b86",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2a696b86",
+        "outputId": "20526b7b-edfc-4036-9737-dcfe6a92f796"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2, 3, 4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 133
+        }
+      ],
+      "source": [
+        "a[np.newaxis, : ] #np.newaxis 는 새로운 차원을 만들겠다는 것, \n",
+        "#보면 앞뒤로 [] 가 하나씩 더 붙음. \n",
+        "#이 말인 즉슨 겉의 [] 안에 또다른 []들이 들어감으로써 다른 차원이 추가된다는 것."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 134,
+      "id": "59a1e8bb",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "59a1e8bb",
+        "outputId": "f2a27157-247f-4813-e4ef-c790e707e832"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(1, 6)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 134
+        }
+      ],
+      "source": [
+        "a2 = a[np.newaxis, :] \n",
+        "a2.shape #한쪽은 1개, 한쪽은 6개의 매트릭스"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 135,
+      "id": "05127b50",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "05127b50",
+        "outputId": "27b301f9-6db9-4ce0-9e25-587cc49e3914"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(6,)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 135
+        }
+      ],
+      "source": [
+        "a.shape"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "bcd1f5be",
+      "metadata": {
+        "id": "bcd1f5be"
+      },
+      "source": [
+        "파이썬의 List와 넘파이의 array는 다르다. array가 활용도가 높다"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 136,
+      "id": "0d01d11c",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0d01d11c",
+        "outputId": "254de4d6-f60f-44ec-e3dd-f2897e079fb9"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "<class 'numpy.ndarray'>\n",
+            "<class 'list'>\n"
+          ]
+        }
+      ],
+      "source": [
+        "b = [0, 1, 2, 3, 4]\n",
+        "print(type(a))\n",
+        "print(type(b))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "a87bd2e3",
+      "metadata": {
+        "id": "a87bd2e3"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([[1, 2, 3, 4], [5, 6,7, 8], [9, 10, 11, 12]])\n",
+        "a  # 3*4 행렬인 셈. 2차원"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 141,
+      "id": "5562fa53",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5562fa53",
+        "outputId": "e06e5964-81b1-4441-8863-23b45c5293a4"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 141
+        }
+      ],
+      "source": [
+        "a[0,1] # 0번쨰 행 1번쨰 열 값을 가져옴."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 138,
+      "id": "7d55db9b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7d55db9b",
+        "outputId": "e8dabe53-6314-484c-d04b-f01e4b6b89a5"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 138
+        }
+      ],
+      "source": [
+        "a[0] # 0번째 행값을 보두 가져온다"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 144,
+      "id": "ee3190eb",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 135
+        },
+        "id": "ee3190eb",
+        "outputId": "9b33171a-34aa-4d98-efb1-cd62fe0065d7"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-144-1aba8269f861>\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    a[,1]\u001b[0m\n\u001b[0m      ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
+          ]
+        }
+      ],
+      "source": [
+        "a[,1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 143,
+      "id": "61150501",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "61150501",
+        "outputId": "ed095e4f-f322-493a-b16e-0715371b4b91"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 2,  6, 10])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 143
+        }
+      ],
+      "source": [
+        "a[:,1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "id": "0a07c7e4",
+      "metadata": {
+        "id": "0a07c7e4"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "id": "0299f2c9",
+      "metadata": {
+        "id": "0299f2c9"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([1, 2, 3])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "id": "193e59be",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "193e59be",
+        "outputId": "a52d589f-40be-4dcc-9c25-614d3b1c781d"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ],
+      "source": [
+        "a"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "id": "c2b99eff",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "c2b99eff",
+        "outputId": "ebe79f0a-fd5f-4cd0-be6b-ab316220db6a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0., 0.])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ],
+      "source": [
+        "np.zeros(2) # array를 매번 입력하여 만들기 어려우니, zero로 가득 채운다는 것"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "id": "ed01ed65",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ed01ed65",
+        "outputId": "4322fb4a-cfc8-41d1-9e02-9be184850411"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1., 1., 1.])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ],
+      "source": [
+        "np.ones(3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "id": "8b2a8a94",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8b2a8a94",
+        "outputId": "d0f5a50b-b5af-4e21-b54f-c360d0fcbe57"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2.66897977e-316, 0.00000000e+000, 2.07955588e-312, 2.02566915e-322])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ],
+      "source": [
+        "np.empty(4) # 아무값이나 나오네?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 10,
+      "id": "d0fd9d2a",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "d0fd9d2a",
+        "outputId": "6692ca9f-326b-4b09-9e5f-437f1a99c50a"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "TypeError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-10-2da593fda286>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrandom\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mTypeError\u001b[0m: 'module' object is not callable"
+          ]
+        }
+      ],
+      "source": [
+        "np.random(3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "id": "83b989eb",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "83b989eb",
+        "outputId": "3c1c8287-51b0-433c-ea99-24e2c05a3392"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 4, 6, 8])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ],
+      "source": [
+        "np.arange(2,9,2) # 2부터 시작해서 9이전까지 만드는데 2칸씩 점프한다"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 12,
+      "id": "af630965",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "af630965",
+        "outputId": "95ce4c2c-eef5-4cf9-86d3-fb51722cb0c3"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 0. ,  2.5,  5. ,  7.5, 10. ])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ],
+      "source": [
+        "np.linspace(0, 10, num=5)\n",
+        "#1부터 10까지의 수중 다섯개로 어레이를 구성하라, 단 간격은 동일케 하라"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "b1edc6cf",
+      "metadata": {
+        "id": "b1edc6cf"
+      },
+      "source": [
+        "특이점은 그냥 0이랑 1 찍어주지 0. 1. 으로 float으로 찍어준다는 것. 바꾸고 싶으면 아래처럼"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "id": "7befb3d2",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7befb3d2",
+        "outputId": "1245e979-db80-4fce-9b4d-c1ca8bc384d5"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 1])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 13
+        }
+      ],
+      "source": [
+        "x = np.ones(2, dtype=np.int64) # 왜 하필 int도 아니고 int64냐\n",
+        "x"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "ac41c0bd",
+      "metadata": {
+        "id": "ac41c0bd"
+      },
+      "source": [
+        "### 정렬"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 14,
+      "id": "5cb24067",
+      "metadata": {
+        "id": "5cb24067"
+      },
+      "outputs": [],
+      "source": [
+        "arr = np.array([2, 5, 9, 1, 10, 42, 27, 6, 10])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "id": "b59bdf9d",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b59bdf9d",
+        "outputId": "5ddc7a98-0e1d-4fa8-8dfc-5c084d4fc20e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 2,  5,  9,  1, 10, 42, 27,  6, 10])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ],
+      "source": [
+        "arr"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "id": "55b4dc5b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "55b4dc5b",
+        "outputId": "b7f182d4-82cc-4bb1-9a72-6e4ec1d45677"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 1,  2,  5,  6,  9, 10, 10, 27, 42])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ],
+      "source": [
+        "np.sort(arr) # 정렬해준다"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 17,
+      "id": "8d02d5ff",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8d02d5ff",
+        "outputId": "69c12538-560a-4dbc-adf1-c0e5255d1d74"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 1,  2,  5,  6,  9, 10, 10, 27, 42])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 17
+        }
+      ],
+      "source": [
+        "arr = np.sort(arr)\n",
+        "arr"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 18,
+      "id": "aad475e9",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aad475e9",
+        "outputId": "f7d3b16d-5074-40e2-a962-751f5bc2aa8d"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([42, 27, 10, 10,  9,  6,  5,  2,  1])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ],
+      "source": [
+        "arr2 = np.sort(arr)[::-1] # 역순 정렬\n",
+        "arr2"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "7b58293b",
+      "metadata": {
+        "id": "7b58293b"
+      },
+      "source": [
+        "### argsort : 정렬하되 정렬한 인덱스를 반환한다."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 19,
+      "id": "4b069483",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4b069483",
+        "outputId": "9f42f460-6051-403e-fada-62558227c6ec"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 0])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ],
+      "source": [
+        "x = np.array([3, 1, 2])\n",
+        "np.argsort(x)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 20,
+      "id": "12b95654",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "12b95654",
+        "outputId": "cfb8a735-ab24-496f-e1d3-027b2d3a460a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[2, 4],\n",
+              "       [1, 3]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ],
+      "source": [
+        "y = np.array([[2, 4], [1, 3]])\n",
+        "y"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 21,
+      "id": "6c3604ec",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6c3604ec",
+        "outputId": "a6c68263-a80f-4ec7-c882-55998591ff56"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 3],\n",
+              "       [2, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 21
+        }
+      ],
+      "source": [
+        "np.sort(y, axis=0) # aixs=0 은 열방향을 기준으로 정렬한다는 것"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 22,
+      "id": "23fb97de",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "23fb97de",
+        "outputId": "8dad44d8-ed0a-4beb-ed08-c37d61f3285e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 1],\n",
+              "       [0, 0]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ],
+      "source": [
+        "np.argsort(y, axis=0)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "9808127c",
+      "metadata": {
+        "id": "9808127c"
+      },
+      "source": [
+        "### lexsort : 2행 이상일 경우, 첫행으로 정렬하여 인덱스 반환 후, 다음 행으로 정렬하여 반환된 인덱스를 재반환\n",
+        "이게 어디에 쓰이지?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 23,
+      "id": "cc87379e",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "cc87379e",
+        "outputId": "eac3c60d-11fa-47db-b375-e51b9b119642"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2 0 4 1 3]\n",
+            "[1 4 3 2 0]\n"
+          ]
+        }
+      ],
+      "source": [
+        "A = np.array([2, 5, 1, 8, 3])\n",
+        "B = np.array([9, 0, 3, 2, 1])\n",
+        "print(np.argsort(A))\n",
+        "print(np.lexsort((A,B)))\n",
+        "# 어디에 쓰이는지 아직 잘 모르겠다"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "ccd5d5a5",
+      "metadata": {
+        "id": "ccd5d5a5"
+      },
+      "source": [
+        "### serchsorted : 지정값이 삽입되어야 할 위치를 반환"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 24,
+      "id": "1bf51778",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1bf51778",
+        "outputId": "fb067bfe-9657-4cbe-ecd7-bbe1969391f2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2\n",
+            "3\n",
+            "[0 5 1 2]\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(np.searchsorted([1,2,3,4,5], 3))\n",
+        "print(np.searchsorted([1,2,3,4,5], 3, side='right'))\n",
+        "print(np.searchsorted([1,2,3,4,5], [-10, 10, 2, 3]))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "16b04c10",
+      "metadata": {
+        "id": "16b04c10"
+      },
+      "source": [
+        "### partition : 배열의 왼쪽(오른쪽)에 k 개의 가장 작은(큰) 값 배치 나머지 랜덤"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 25,
+      "id": "ef5b06a8",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ef5b06a8",
+        "outputId": "9b0f27d3-574d-44a5-b0cd-06a9310ba469"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[ 0  2  3  7 10  5]\n"
+          ]
+        }
+      ],
+      "source": [
+        "C = np.array([3, 0, 5, 7, 10, 2])\n",
+        "print(np.partition(C,2)) # k = 2, 가장 작은값 2개를 왼쪽 정렬"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "32f3c4aa",
+      "metadata": {
+        "id": "32f3c4aa",
+        "outputId": "042dd603-e810-452c-9af1-9be914a2ba28"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "[ 0  2  3  5  7 10]\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(np.partition(C,-2)) # k = -2, 가장 큰 값 2개를 오른쪽 정렬"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "428f8714",
+      "metadata": {
+        "id": "428f8714"
+      },
+      "source": [
+        "### concatenate : array 합치기"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 26,
+      "id": "03c937c5",
+      "metadata": {
+        "id": "03c937c5"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([1, 2, 3, 4])\n",
+        "b = np.array([5, 6, 7, 9])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 27,
+      "id": "8dc60e98",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8dc60e98",
+        "outputId": "02c5cfe7-ab85-45b0-b469-3ab7caa3bf76"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3, 4, 5, 6, 7, 9])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 27
+        }
+      ],
+      "source": [
+        "np.concatenate((a,b)) # 요소가 두개로 합쳐짐. 각각 1차원 array로 파악되어서 그런듯"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 28,
+      "id": "842f590f",
+      "metadata": {
+        "id": "842f590f"
+      },
+      "outputs": [],
+      "source": [
+        "x = np.array([[1, 2], [3, 4]])\n",
+        "y = np.array([[5, 6]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 29,
+      "id": "f73a7224",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f73a7224",
+        "outputId": "9b12d334-d4ca-43e6-97d7-44753400fc75"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 29
+        }
+      ],
+      "source": [
+        "x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 30,
+      "id": "3c01f648",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3c01f648",
+        "outputId": "d2143d14-8f3a-415e-835c-85c2687edc08"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 30
+        }
+      ],
+      "source": [
+        "y"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 31,
+      "id": "1cd58833",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1cd58833",
+        "outputId": "0f87bf1a-ebef-423b-f3e4-e2b30607900f"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4],\n",
+              "       [5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 31
+        }
+      ],
+      "source": [
+        "np.concatenate((x,y)) # 그냥 쓰면 행을 붙이게 됨"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 32,
+      "id": "8de3e86c",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8de3e86c",
+        "outputId": "8b15b88b-9f54-4982-8e68-4f8e717fdc41"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4],\n",
+              "       [5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 32
+        }
+      ],
+      "source": [
+        "np.concatenate((x,y), axis=0) #행 기준으로 위와 동일"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 33,
+      "id": "938b44a9",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 206
+        },
+        "id": "938b44a9",
+        "outputId": "d7204e5f-b139-40d3-843c-c7fb2f320997"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "ValueError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-33-1a7aa0cde2a9>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mconcatenate\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mx\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0my\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0maxis\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;31m#열 기준으로 합치려 하면 행렬 수가 안 맞아서 에러뜸\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/numpy/core/overrides.py\u001b[0m in \u001b[0;36mconcatenate\u001b[0;34m(*args, **kwargs)\u001b[0m\n",
+            "\u001b[0;31mValueError\u001b[0m: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 2 and the array at index 1 has size 1"
+          ]
+        }
+      ],
+      "source": [
+        "np.concatenate((x,y), axis=1) #열 기준으로 합치려 하면 행렬 수가 안 맞아서 에러뜸"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "87c4916a",
+      "metadata": {
+        "id": "87c4916a"
+      },
+      "source": [
+        "### 차원 보기"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 34,
+      "id": "dcfba555",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 135
+        },
+        "id": "dcfba555",
+        "outputId": "05eccc97-8e06-4178-c0a0-99a2392198f9"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-34-9aa7c1165631>\"\u001b[0;36m, line \u001b[0;32m2\u001b[0m\n\u001b[0;31m    [4, 5, 6, 7]],  안에 [ , [ 2줄 있고, 그 안에는 4개 그래서 3, 2, 4\u001b[0m\n\u001b[0m                             ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid decimal literal\n"
+          ]
+        }
+      ],
+      "source": [
+        "array_example = np.array([[[0, 1, 2, 3], # [[[ 으로 3차원\n",
+        "                           [4, 5, 6, 7]],  안에 [ , [ 2줄 있고, 그 안에는 4개 그래서 3, 2, 4\n",
+        "\n",
+        "                          [[0, 1, 2, 3],\n",
+        "                           [4, 5, 6, 7]],\n",
+        "\n",
+        "                          [[0 ,1 ,2, 3],\n",
+        "                           [4, 5, 6, 7]]])  #이게 3차원 구조임"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 35,
+      "id": "2be6e6fd",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "2be6e6fd",
+        "outputId": "a9cc66f2-c205-482c-be90-c3a2591953b0"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-35-8cc6491ab246>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0marray_example\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mndim\u001b[0m \u001b[0;31m#차원을 보자\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'array_example' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "array_example.ndim #차원을 보자"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 36,
+      "id": "1baf52af",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "1baf52af",
+        "outputId": "dfac4287-9386-4c06-927f-6105b7ec446f"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-36-6fee39e790d9>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0marray_example\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msize\u001b[0m \u001b[0;31m#개체수를 보자\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'array_example' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "array_example.size #개체수를 보자"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 37,
+      "id": "aa8d60ec",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "aa8d60ec",
+        "outputId": "e70db584-3333-4d0a-f919-c79717d5e780"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-37-1cda66429958>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0marray_example\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m \u001b[0;31m#형태를 보자 3*2*4의 3차원 , 가장 바깥 쪽에 있는 수 3부터 센다. 그 안에 원소단위\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'array_example' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "array_example.shape #형태를 보자 3*2*4의 3차원 , 가장 바깥 쪽에 있는 수 3부터 센다. 그 안에 원소단위"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "5e8a2742",
+      "metadata": {
+        "id": "5e8a2742"
+      },
+      "source": [
+        "### shape 바꾸기"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 38,
+      "id": "20968ff6",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "20968ff6",
+        "outputId": "0feee94b-2967-402c-e9d6-ef7e20d132cd"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0, 1, 2, 3, 4, 5])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 38
+        }
+      ],
+      "source": [
+        "a = np.arange(6)\n",
+        "a"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 39,
+      "id": "09e6b5e0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "09e6b5e0",
+        "outputId": "89a87588-fec6-44e2-d3e0-88997e7d83bf"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2],\n",
+              "       [3, 4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 39
+        }
+      ],
+      "source": [
+        "a.reshape(2,3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 40,
+      "id": "21660b95",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "21660b95",
+        "outputId": "d9b34f1a-00bc-4127-f9b9-ee61a436edfc"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1],\n",
+              "       [2, 3],\n",
+              "       [4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 40
+        }
+      ],
+      "source": [
+        "a.reshape(3,2)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 41,
+      "id": "dfc2f3dd",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "dfc2f3dd",
+        "outputId": "673f9780-6213-4af4-a23e-635322dcb681"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "ValueError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-41-7bef53bc6d3e>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0ma\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreshape\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m4\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m2\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;31m# 개체수가 안 맞아서 에러, 6개 밖에 없는데 8개 있는 테이블 만들라니 에러\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m: cannot reshape array of size 6 into shape (4,2)"
+          ]
+        }
+      ],
+      "source": [
+        "a.reshape(4,2) # 개체수가 안 맞아서 에러, 6개 밖에 없는데 8개 있는 테이블 만들라니 에러"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 42,
+      "id": "32cd354a",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "32cd354a",
+        "outputId": "7687ca55-f1a0-4f0b-841a-b36e0e92bfa3"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2],\n",
+              "       [3, 4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 42
+        }
+      ],
+      "source": [
+        "np.reshape(a, newshape=(2, 3), order='A')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "dff5964a",
+      "metadata": {
+        "id": "dff5964a"
+      },
+      "source": [
+        "### shape"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 43,
+      "id": "f64510a1",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f64510a1",
+        "outputId": "6c3b269c-fcb0-4ae6-96fd-ef9822b34fd8"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0, 1, 2, 3, 4, 5])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 43
+        }
+      ],
+      "source": [
+        "a"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 44,
+      "id": "ba344c03",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ba344c03",
+        "outputId": "e7a5a60d-fa40-46e4-ccc9-08757be805a2"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(6,)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 44
+        }
+      ],
+      "source": [
+        "a.shape"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 45,
+      "id": "a0102872",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "a0102872",
+        "outputId": "048a4200-cb39-4821-915e-818207f0bdc5"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2, 3, 4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 45
+        }
+      ],
+      "source": [
+        "a2 = a[np.newaxis,:] # 차원을 하나 더 추가 기존 [] 를 덮어씌우는 []가 생김, 뒤에 : 는 모든열에 적용한다는 것\n",
+        "a2"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 46,
+      "id": "29f59846",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "29f59846",
+        "outputId": "d796626a-aa7f-4304-f733-5992f1d78582"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(1, 6)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 46
+        }
+      ],
+      "source": [
+        "a2.shape"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 47,
+      "id": "b241c6fe",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b241c6fe",
+        "outputId": "f287ec05-fb69-4a2f-fd24-40d60cd9b233"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 47
+        }
+      ],
+      "source": [
+        "a3 = a[np.newaxis, :3] # 3열만 가져와서 차원 추가\n",
+        "a3"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 48,
+      "id": "b860a7b6",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b860a7b6",
+        "outputId": "b85ad584-acab-4866-e01f-3c5d2105c6ce"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0],\n",
+              "       [1],\n",
+              "       [2],\n",
+              "       [3],\n",
+              "       [4],\n",
+              "       [5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 48
+        }
+      ],
+      "source": [
+        "a4 = a[:,np.newaxis] # \n",
+        "a4"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "9e6d80d1",
+      "metadata": {
+        "id": "9e6d80d1"
+      },
+      "source": [
+        "### indexing and slicing"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 49,
+      "id": "8b91f1f4",
+      "metadata": {
+        "id": "8b91f1f4"
+      },
+      "outputs": [],
+      "source": [
+        "data = np.array([1, 2, 3])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 50,
+      "id": "fabc2d0b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fabc2d0b",
+        "outputId": "a8357aa8-eb61-41dd-aeec-76a302d1ab4e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 50
+        }
+      ],
+      "source": [
+        "data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 51,
+      "id": "4a18aca7",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4a18aca7",
+        "outputId": "f661a2ad-a510-4e95-e447-3892dc037d12"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 51
+        }
+      ],
+      "source": [
+        "data[2]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 52,
+      "id": "f8ea64c4",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f8ea64c4",
+        "outputId": "3c451dbb-ff31-45a7-da01-28abd505febf"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 52
+        }
+      ],
+      "source": [
+        "data[0:2]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 53,
+      "id": "9983a7d1",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9983a7d1",
+        "outputId": "fe726f43-69eb-463f-b384-c08c44e468fc"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 53
+        }
+      ],
+      "source": [
+        "data[1:]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 54,
+      "id": "dd97e600",
+      "metadata": {
+        "id": "dd97e600"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([[1, 2, 3, 4],[5, 6, 7, 8],[9, 10, 11, 12]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 55,
+      "id": "1c0268bc",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1c0268bc",
+        "outputId": "5c9e93e9-3ee5-41a5-daf0-b1adc2027b66"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[ True,  True,  True,  True],\n",
+              "       [False, False, False, False],\n",
+              "       [False, False, False, False]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 55
+        }
+      ],
+      "source": [
+        "a<5"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 56,
+      "id": "383e40c0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "383e40c0",
+        "outputId": "64a62d4e-fffe-488a-e352-8cd3cd2a1cc9"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3, 4])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 56
+        }
+      ],
+      "source": [
+        "a [ a < 5 ]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 57,
+      "id": "1f1e8824",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1f1e8824",
+        "outputId": "dbdd82ee-9444-4121-a5a9-56bf0a889aca"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 5,  6,  7,  8,  9, 10, 11, 12])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 57
+        }
+      ],
+      "source": [
+        "a [ a >= 5]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 58,
+      "id": "46f144bc",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "46f144bc",
+        "outputId": "ae0a691a-abca-4068-9305-57eae214cbef"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 2,  4,  6,  8, 10, 12])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 58
+        }
+      ],
+      "source": [
+        "a [ a % 2 == 0]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 59,
+      "id": "be7bdd51",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "be7bdd51",
+        "outputId": "79ea0296-dd90-4b5e-dff4-4914294d3462"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 3,  4,  5,  6,  7,  8,  9, 10])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 59
+        }
+      ],
+      "source": [
+        "a [ ( a > 2 ) & ( a < 11 ) ]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 60,
+      "id": "5469ac53",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5469ac53",
+        "outputId": "9f9f3561-e10f-4baf-8ded-f3c2ad28b001"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(array([0, 0, 0, 0]), array([0, 1, 2, 3]))\n"
+          ]
+        }
+      ],
+      "source": [
+        "a = np.array([[1, 2, 3, 4],[5, 6, 7, 8],[9, 10, 11, 12]])\n",
+        "b = np.nonzero(a < 5)\n",
+        "print(b)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 61,
+      "id": "1b33428f",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1b33428f",
+        "outputId": "62cd172f-9576-4cc6-f5d6-000846eb755b"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[(0, 0), (0, 1), (0, 2), (0, 3)]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 61
+        }
+      ],
+      "source": [
+        "list(zip(b[0], b[1])) # 5보다 작은 애들 중에 0이 아닌애들 좌표"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "3ba90b9a",
+      "metadata": {
+        "id": "3ba90b9a"
+      },
+      "source": [
+        "### How to create an array for existing data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 62,
+      "id": "b7e67773",
+      "metadata": {
+        "id": "b7e67773"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 63,
+      "id": "0ad2fb0d",
+      "metadata": {
+        "id": "0ad2fb0d"
+      },
+      "outputs": [],
+      "source": [
+        "arr1 = a[3:8]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 64,
+      "id": "589ab529",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "589ab529",
+        "outputId": "15c9c3c2-c4c8-4e09-fee6-c97eb69201ec"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([4, 5, 6, 7, 8])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 64
+        }
+      ],
+      "source": [
+        "arr1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 65,
+      "id": "d6346fdb",
+      "metadata": {
+        "id": "d6346fdb"
+      },
+      "outputs": [],
+      "source": [
+        "a1 = np.array([[1, 1],\n",
+        "              [2, 2]])\n",
+        "a2 = np.array([[3, 3],\n",
+        "              [4, 4]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 66,
+      "id": "8bee1d00",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8bee1d00",
+        "outputId": "fbc0f44e-b74f-4cc2-d3d2-d77ae90bb27d"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 1],\n",
+              "       [2, 2],\n",
+              "       [3, 3],\n",
+              "       [4, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 66
+        }
+      ],
+      "source": [
+        "np.vstack((a1, a2))   #이런 게 있다 정도로만 기억해두면 됨. 필요하면 찾아볼 수 있는 수준으로"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 67,
+      "id": "752a14c1",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "752a14c1",
+        "outputId": "bf8fb03d-59ea-4f1f-f530-15dd8af07ca2"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 1],\n",
+              "       [2, 2],\n",
+              "       [3, 3],\n",
+              "       [4, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 67
+        }
+      ],
+      "source": [
+        "np.concatenate((a1, a2), axis=0)  #vstack 보단 concatenate를 더 빈번하게 씀"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 68,
+      "id": "1747ac7c",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1747ac7c",
+        "outputId": "f7eeee51-252d-4bde-bd64-77b003f57bdf"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 1, 3, 3],\n",
+              "       [2, 2, 4, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 68
+        }
+      ],
+      "source": [
+        "np.concatenate((a1, a2), axis=1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 70,
+      "id": "add033b3",
+      "metadata": {
+        "id": "add033b3"
+      },
+      "outputs": [],
+      "source": [
+        "x = np.arange(1, 25).reshape(2, 12)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 69,
+      "id": "06baf1ee",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "06baf1ee",
+        "outputId": "e50b74f7-e615-49c1-815d-6a8db6b144c0"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 69
+        }
+      ],
+      "source": [
+        "x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 71,
+      "id": "9434989b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9434989b",
+        "outputId": "8cc051b3-25a4-420a-9b5f-1f7134ec7a9a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[array([[ 1,  2,  3,  4],\n",
+              "        [13, 14, 15, 16]]),\n",
+              " array([[ 5,  6,  7,  8],\n",
+              "        [17, 18, 19, 20]]),\n",
+              " array([[ 9, 10, 11, 12],\n",
+              "        [21, 22, 23, 24]])]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 71
+        }
+      ],
+      "source": [
+        "np.hsplit(x,3)  # 위에서 입력한 x를 3개의 array로 잘라서 씀. 별로 쓸 일 없는 듯."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 72,
+      "id": "ba1ca452",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ba1ca452",
+        "outputId": "4a2acfc5-f90f-411b-f756-32b7e85c1413"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[array([[ 1,  2,  3],\n",
+              "        [13, 14, 15]]),\n",
+              " array([[ 4],\n",
+              "        [16]]),\n",
+              " array([[ 5,  6,  7,  8,  9, 10, 11, 12],\n",
+              "        [17, 18, 19, 20, 21, 22, 23, 24]])]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 72
+        }
+      ],
+      "source": [
+        "np.hsplit(x, (3, 4)) #인덱스에 해당하는 부분을 자름."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "1b863f8c",
+      "metadata": {
+        "id": "1b863f8c"
+      },
+      "source": [
+        "# 여기서부터 중요하다"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 73,
+      "id": "979ec9c9",
+      "metadata": {
+        "id": "979ec9c9"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 74,
+      "id": "b1aef555",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b1aef555",
+        "outputId": "080f6b70-ca18-4503-cfb4-f0fe83ce0ad0"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[ 1,  2,  3,  4],\n",
+              "       [ 5,  6,  7,  8],\n",
+              "       [ 9, 10, 11, 12]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 74
+        }
+      ],
+      "source": [
+        "a"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 75,
+      "id": "69004bf0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "69004bf0",
+        "outputId": "19d8aee7-1706-460c-9fe7-d9039b23ef66"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 9, 10, 11, 12])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 75
+        }
+      ],
+      "source": [
+        "a[2, :]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 76,
+      "id": "ea4768d9",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ea4768d9",
+        "outputId": "6ef56fbd-fc84-4dbd-af22-c008f9f11ebb"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 3,  7, 11])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 76
+        }
+      ],
+      "source": [
+        "a[:,2]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 77,
+      "id": "46081144",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "46081144",
+        "outputId": "e4c031f5-5d0b-476e-d94a-2c135ebdf676"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3, 4])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 77
+        }
+      ],
+      "source": [
+        "b1 = a[0,:]\n",
+        "b1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 78,
+      "id": "b1cabd5d",
+      "metadata": {
+        "id": "b1cabd5d"
+      },
+      "outputs": [],
+      "source": [
+        "b1[0] = 99"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 79,
+      "id": "618208f7",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "618208f7",
+        "outputId": "848aec38-b1eb-4b96-ac45-5488870c3d36"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[99,  2,  3,  4],\n",
+              "       [ 5,  6,  7,  8],\n",
+              "       [ 9, 10, 11, 12]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 79
+        }
+      ],
+      "source": [
+        "a  # 원본 a 에서 b를 추출해서 가공했는데 원본까지 바뀌어 버림. 이게 무슨 일이람"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 80,
+      "id": "aee7dc19",
+      "metadata": {
+        "id": "aee7dc19"
+      },
+      "outputs": [],
+      "source": [
+        "b2 = a.copy() # a의 가피본 b2 생성"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 81,
+      "id": "36ccf546",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "36ccf546",
+        "outputId": "83fb7fc5-8743-47da-e3e6-ac3297c45155"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[99,  2,  3,  4],\n",
+              "       [ 5,  7,  7,  8],\n",
+              "       [ 9, 10, 11, 12]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 81
+        }
+      ],
+      "source": [
+        "b2[1,1] = 7\n",
+        "b2"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 82,
+      "id": "85c8fa22",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "85c8fa22",
+        "outputId": "891c62ba-5f55-4eaa-a43e-43d2d4572bd6"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[99,  2,  3,  4],\n",
+              "       [ 5,  6,  7,  8],\n",
+              "       [ 9, 10, 11, 12]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 82
+        }
+      ],
+      "source": [
+        "a # b2 세부항목을 바꿔도 a 는 안바뀌게 됨"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "fc6ab5a3",
+      "metadata": {
+        "id": "fc6ab5a3"
+      },
+      "source": [
+        "### basic array operations"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 83,
+      "id": "741d86a8",
+      "metadata": {
+        "id": "741d86a8"
+      },
+      "outputs": [],
+      "source": [
+        "data = np.array([1, 2])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 84,
+      "id": "0f8fd3be",
+      "metadata": {
+        "id": "0f8fd3be"
+      },
+      "outputs": [],
+      "source": [
+        "ones = np.ones(2, dtype = int)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 85,
+      "id": "50ce1fda",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "50ce1fda",
+        "outputId": "7d7c51d4-c34c-4940-d3ea-c871955847ec"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 85
+        }
+      ],
+      "source": [
+        "data + ones"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 86,
+      "id": "455d39cd",
+      "metadata": {
+        "id": "455d39cd"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([1, 2, 3, 4])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 87,
+      "id": "1d41ed38",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1d41ed38",
+        "outputId": "5555f067-40d2-4023-d861-8f48137c0454"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "10"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 87
+        }
+      ],
+      "source": [
+        "a.sum()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 88,
+      "id": "1b8e76ac",
+      "metadata": {
+        "id": "1b8e76ac"
+      },
+      "outputs": [],
+      "source": [
+        "b = np.array([[1, 1],[2, 2]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 89,
+      "id": "f8df2e53",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f8df2e53",
+        "outputId": "2f43294a-939c-4ae5-92b4-1d385833034b"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "6"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 89
+        }
+      ],
+      "source": [
+        "b.sum()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 90,
+      "id": "55bf7ed9",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "55bf7ed9",
+        "outputId": "7d45fd3f-ce41-40c1-be3d-8721b6464a46"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([3, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 90
+        }
+      ],
+      "source": [
+        "b.sum(axis=0)  # axis=0은 행을 기준. 행을 기준으로 열끼리 합친다고? 행을 옮겨가면서 더한다."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 91,
+      "id": "7b4181fa",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7b4181fa",
+        "outputId": "c9f6382b-f68d-43e3-db11-a37a457e66c7"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 4])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 91
+        }
+      ],
+      "source": [
+        "b.sum(axis=1) # 좀 헷갈리게 만들었네"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "afa942cf",
+      "metadata": {
+        "id": "afa942cf"
+      },
+      "source": [
+        "### More useful array operations"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 92,
+      "id": "42c08bfb",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "42c08bfb",
+        "outputId": "6c0b8b33-c9d8-4fdb-f20d-39342f35b38a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 92
+        }
+      ],
+      "source": [
+        "data.max()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 93,
+      "id": "773cefe1",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "773cefe1",
+        "outputId": "8813cec1-9a10-4bc7-bde3-a27a516c3afc"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 93
+        }
+      ],
+      "source": [
+        "data.sum()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 94,
+      "id": "dea46556",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dea46556",
+        "outputId": "757cabda-a1e2-4501-9fb7-6f3d63298a1e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 94
+        }
+      ],
+      "source": [
+        "data.min()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 95,
+      "id": "a59776e6",
+      "metadata": {
+        "id": "a59776e6"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([[0.45053314, 0.17296777, 0.34376245, 0.5510652],\n",
+        "              [0.54627315, 0.05093587, 0.40067661, 0.55645993],\n",
+        "              [0.12697628, 0.82485143, 0.26590556, 0.56917101]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 96,
+      "id": "32d10d19",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "32d10d19",
+        "outputId": "61c5d1f8-e5fe-47ab-eb9f-6cfa78ba66fe"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.05093587"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 96
+        }
+      ],
+      "source": [
+        "a.min()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 97,
+      "id": "4d392502",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4d392502",
+        "outputId": "f0a508e3-cd01-4df4-e590-7a404c0eb8d0"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0.12697628, 0.05093587, 0.26590556, 0.5510652 ])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 97
+        }
+      ],
+      "source": [
+        "a.min(axis=0) # 행 중에서 가장 작은애를 찾는다? 실제는 같은 열에서 작은 애를 찾는 결과. 이정도면 axis=0은 열기준으로 외우는게 낫지않을까?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "464700d5",
+      "metadata": {
+        "id": "464700d5"
+      },
+      "source": [
+        "### Creating matrics"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 98,
+      "id": "44b04250",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "44b04250",
+        "outputId": "fda61083-0092-40ed-b298-d8531521914f"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4],\n",
+              "       [5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 98
+        }
+      ],
+      "source": [
+        "data = np.array([[1, 2], [3, 4], [5, 6]])\n",
+        "data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 99,
+      "id": "c281a264",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "c281a264",
+        "outputId": "cf186359-5076-4031-9a7f-3e384dabcf90"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 99
+        }
+      ],
+      "source": [
+        "data[0, 1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 100,
+      "id": "d8aeb80f",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "d8aeb80f",
+        "outputId": "e3648dcc-7b46-4af2-a856-8969d760edb5"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[3, 4],\n",
+              "       [5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 100
+        }
+      ],
+      "source": [
+        "data[1:3]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 101,
+      "id": "7e98b21f",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7e98b21f",
+        "outputId": "ab6bd9ff-02e1-456c-dfe4-b0ae40a8e066"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 3])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 101
+        }
+      ],
+      "source": [
+        "data[0:2, 0]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 102,
+      "id": "bb86d3da",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bb86d3da",
+        "outputId": "cfbbe84a-bdf1-40b2-cd72-c8563b6e4604"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "6\n",
+            "1\n",
+            "21\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(data.max())\n",
+        "print(data.min())\n",
+        "print(data.sum())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 103,
+      "id": "f7dd645d",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f7dd645d",
+        "outputId": "57898562-e97f-4711-fa7e-b77747c6bedf"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [5, 3],\n",
+              "       [4, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 103
+        }
+      ],
+      "source": [
+        "data = np.array([[1, 2], [5, 3], [4, 6]])\n",
+        "data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 104,
+      "id": "0fbcd6e0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0fbcd6e0",
+        "outputId": "26e7df6b-e894-4080-8fb5-7318d89bd498"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([5, 6])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 104
+        }
+      ],
+      "source": [
+        "data.max(axis=0) #행을 바꿔가면서 최대값 찾는다고 이해"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 105,
+      "id": "e3bc1415",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "e3bc1415",
+        "outputId": "5cdf9f26-557b-40bd-d6f4-c5b2d41bf58d"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 5, 6])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 105
+        }
+      ],
+      "source": [
+        "data.max(axis=1) #열을 바꿔가면서 최대값을 찾는다고 이해"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 106,
+      "id": "0ecd237c",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0ecd237c",
+        "outputId": "4dbb3855-64f6-4707-f43a-6a9e7e918a3a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[2, 3],\n",
+              "       [4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 106
+        }
+      ],
+      "source": [
+        "data = np.array([[1, 2], [3, 4]])\n",
+        "ones = np.array([[1, 1], [1, 1]])\n",
+        "data + ones"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 107,
+      "id": "982783f8",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "982783f8",
+        "outputId": "13bea7b1-a675-404e-8ae0-14ddd6cd6cb0"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[2, 3],\n",
+              "       [4, 5],\n",
+              "       [6, 7]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 107
+        }
+      ],
+      "source": [
+        "data = np.array([[1, 2], [3, 4], [5, 6]])\n",
+        "ones_row = np.array([[1, 1]])\n",
+        "data + ones_row"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "627d9a45",
+      "metadata": {
+        "id": "627d9a45"
+      },
+      "source": [
+        "### How to get unique items and counts"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 108,
+      "id": "e1beff01",
+      "metadata": {
+        "id": "e1beff01"
+      },
+      "outputs": [],
+      "source": [
+        "a = np.array([11, 11, 12, 13, 14, 15, 16, 17, 12, 13, 11, 14, 18, 19, 20])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 109,
+      "id": "50e1dd14",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "50e1dd14",
+        "outputId": "9c228db9-7e96-474a-906c-9259f895c5ae"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[11 12 13 14 15 16 17 18 19 20]\n"
+          ]
+        }
+      ],
+      "source": [
+        "unique_values = np.unique(a)\n",
+        "print(unique_values)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 110,
+      "id": "17f763f3",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "17f763f3",
+        "outputId": "857b77e8-8a8e-4524-8f24-76a53d9ed0cb"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[ 0  2  3  4  5  6  7 12 13 14]\n"
+          ]
+        }
+      ],
+      "source": [
+        "unique_values, indices_list = np.unique(a, return_index=True)\n",
+        "print(indices_list)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "a450c89b",
+      "metadata": {
+        "id": "a450c89b"
+      },
+      "source": [
+        "### Transposing and reshaping a matrix"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 111,
+      "id": "37b1c32a",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "37b1c32a",
+        "outputId": "3c0d70c7-aff7-4bab-f52a-e6e1c3f0808a"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2, 3],\n",
+              "       [4, 5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 111
+        }
+      ],
+      "source": [
+        "data.reshape(2, 3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 112,
+      "id": "88ff34d0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "88ff34d0",
+        "outputId": "0a13c1ce-a539-4b71-f82f-221d9698b637"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2],\n",
+              "       [3, 4],\n",
+              "       [5, 6]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 112
+        }
+      ],
+      "source": [
+        "data.reshape(3, 2)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 113,
+      "id": "b31e6248",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b31e6248",
+        "outputId": "e30e9530-1257-49d8-f19e-fff81673d02e"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 1, 2],\n",
+              "       [3, 4, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 113
+        }
+      ],
+      "source": [
+        "arr = np.arange(6).reshape((2, 3))\n",
+        "arr"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 114,
+      "id": "dafb6002",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dafb6002",
+        "outputId": "3a7b0f4d-048e-4aa2-a63b-c49c61eb2fb5"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 3],\n",
+              "       [1, 4],\n",
+              "       [2, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 114
+        }
+      ],
+      "source": [
+        "arr.transpose()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 115,
+      "id": "40ec3a13",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "40ec3a13",
+        "outputId": "b2425ef1-2e2f-4a2e-ad84-ce18546de4ba"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0, 3],\n",
+              "       [1, 4],\n",
+              "       [2, 5]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 115
+        }
+      ],
+      "source": [
+        "arr.T"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "001c910d",
+      "metadata": {
+        "id": "001c910d"
+      },
+      "source": [
+        "### How to reverse an array"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 116,
+      "id": "22e7ad66",
+      "metadata": {
+        "id": "22e7ad66"
+      },
+      "outputs": [],
+      "source": [
+        "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 117,
+      "id": "43338d4c",
+      "metadata": {
+        "id": "43338d4c"
+      },
+      "outputs": [],
+      "source": [
+        "reversed_arr = np.flip(arr)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 118,
+      "id": "954343a4",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "954343a4",
+        "outputId": "638a28e4-a0e5-46f2-c02a-906a1cdc4e56"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Reversed Array:  [8 7 6 5 4 3 2 1]\n"
+          ]
+        }
+      ],
+      "source": [
+        "print('Reversed Array: ', reversed_arr)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 119,
+      "id": "f582e11d",
+      "metadata": {
+        "id": "f582e11d"
+      },
+      "outputs": [],
+      "source": [
+        "arr_2d = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 120,
+      "id": "502fd778",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "502fd778",
+        "outputId": "1b79552d-3fe0-454e-ec89-ebeaeff652b9"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[12 11 10  9]\n",
+            " [ 8  7  6  5]\n",
+            " [ 4  3  2  1]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "reversed_arr = np.flip(arr_2d)\n",
+        "print(reversed_arr)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 121,
+      "id": "d7e2e072",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "d7e2e072",
+        "outputId": "a6de34e4-a865-463e-a3e8-ad9300efe1c6"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 9 10 11 12]\n",
+            " [ 5  6  7  8]\n",
+            " [ 1  2  3  4]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "reversed_arr_rows = np.flip(arr_2d, axis=0)\n",
+        "print(reversed_arr_rows)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 122,
+      "id": "de5ae4ea",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "de5ae4ea",
+        "outputId": "901c9d4a-37d6-40d9-fc02-ccb3c1571f01"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 4  3  2  1]\n",
+            " [ 8  7  6  5]\n",
+            " [12 11 10  9]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "reversed_arr_columns = np.flip(arr_2d, axis=1)\n",
+        "print(reversed_arr_columns)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 123,
+      "id": "4bdb8b58",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4bdb8b58",
+        "outputId": "5b45a175-e02b-4b95-8c3d-9baf2406d2c4"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 1  2  3  4]\n",
+            " [ 8  7  6  5]\n",
+            " [ 9 10 11 12]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "arr_2d[1] = np.flip(arr_2d[1])\n",
+        "print(arr_2d)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 124,
+      "id": "e80b4d4b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "e80b4d4b",
+        "outputId": "923aa0f7-d4b1-47dd-8d5b-5b675f9f4d9b"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 1 10  3  4]\n",
+            " [ 8  7  6  5]\n",
+            " [ 9  2 11 12]]\n"
+          ]
+        }
+      ],
+      "source": [
+        "arr_2d[:,1] = np.flip(arr_2d[:,1])\n",
+        "print(arr_2d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "75956c6a",
+      "metadata": {
+        "id": "75956c6a"
+      },
+      "source": [
+        "## Reshaping and flattening multidimensional arrays"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 125,
+      "id": "a6f4b1e4",
+      "metadata": {
+        "id": "a6f4b1e4"
+      },
+      "outputs": [],
+      "source": [
+        "x = np.array([[1 , 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 126,
+      "id": "01b0d1f7",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "01b0d1f7",
+        "outputId": "59e670b3-2c2e-4cb2-ea0b-02b40ed487fc"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 126
+        }
+      ],
+      "source": [
+        "x.flatten() # 1차원으로 평탄화"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 127,
+      "id": "f6601354",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f6601354",
+        "outputId": "4aa8343f-5049-410b-fa2e-9bd4aba80077"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[ 1  2  3  4]\n",
+            " [ 5  6  7  8]\n",
+            " [ 9 10 11 12]]\n",
+            "[99  2  3  4  5  6  7  8  9 10 11 12]\n"
+          ]
+        }
+      ],
+      "source": [
+        "a1 = x.flatten() # x를 평탄화하여 a1에 저장\n",
+        "a1[0] = 99 # 첫번째 값을 99로바꿈\n",
+        "print(x)\n",
+        "print(a1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 128,
+      "id": "457e74f9",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "457e74f9",
+        "outputId": "38250e22-469b-4a3c-e379-61f9c412bccf"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[98  2  3  4]\n",
+            " [ 5  6  7  8]\n",
+            " [ 9 10 11 12]]\n",
+            "[98  2  3  4  5  6  7  8  9 10 11 12]\n"
+          ]
+        }
+      ],
+      "source": [
+        "a2 = x.ravel()  # flattne은과 ravel의 차이는 ravel은 원본 데이터 x까지 바꿔버림\n",
+        "a2[0] = 98\n",
+        "print(x)  # flatten 케이스와 달리 x의 맨 앞 값마저 98로 바뀌어 있음\n",
+        "print(a2)  "
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3 (ipykernel)",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.13"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
