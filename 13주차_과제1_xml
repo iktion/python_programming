@@ -1,0 +1,384 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/iktion/python_programming/blob/main/13%EC%A3%BC%EC%B0%A8_%EA%B3%BC%EC%A0%9C1_xml\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "id": "b6b1abcb",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 135
+        },
+        "id": "b6b1abcb",
+        "outputId": "b48fad83-8603-4a46-d24c-f651a4d6a2bd"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-15-ac6ae8d68987>\"\u001b[0;36m, line \u001b[0;32m3\u001b[0m\n\u001b[0;31m    root = tree.getroot()\\\\menu.xml\u001b[0m\n\u001b[0m                          ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m unexpected character after line continuation character\n"
+          ]
+        }
+      ],
+      "source": [
+        "import xml.etree.ElementTree as et\n",
+        "tree = et.ElementTree(file='menu.xml')\n",
+        "root = tree.getroot()\\\\menu.xml\n",
+        "\n",
+        "print(root.tag)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "86ce1e41",
+      "metadata": {
+        "id": "86ce1e41"
+      },
+      "outputs": [],
+      "source": [
+        "type(root)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "id": "7c277fdc",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 224
+        },
+        "id": "7c277fdc",
+        "outputId": "34081247-7efe-4d40-b23c-7322fa045eb0"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-7-3aea0d211dbd>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mfor\u001b[0m \u001b[0mchild\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mroot\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'tag:'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mchild\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtag\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'attributes:'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mchild\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mattrib\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m     \u001b[0;32mfor\u001b[0m \u001b[0mgrandchild\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mchild\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m         \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'\\ttag:'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mgrandchild\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtag\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'attributes:'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mgrandchild\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mattrib\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'root' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "for child in root:\n",
+        "    print('tag:', child.tag, 'attributes:', child.attrib)\n",
+        "    for grandchild in child:\n",
+        "        print('\\ttag:', grandchild.tag, 'attributes:', grandchild.attrib)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "9c5c334e",
+      "metadata": {
+        "id": "9c5c334e"
+      },
+      "outputs": [],
+      "source": [
+        "len(root)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "add00132",
+      "metadata": {
+        "id": "add00132"
+      },
+      "outputs": [],
+      "source": [
+        "len(root[0])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "3f9df8f9",
+      "metadata": {
+        "id": "3f9df8f9"
+      },
+      "outputs": [],
+      "source": [
+        "type(root[0])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "ed8bcae9",
+      "metadata": {
+        "id": "ed8bcae9"
+      },
+      "outputs": [],
+      "source": [
+        "print(root[0])\n",
+        "print(root[0].get(\"hours\"))\n",
+        "print(root[0].keys())\n",
+        "print(root[0].items())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "4e9adc6e",
+      "metadata": {
+        "id": "4e9adc6e"
+      },
+      "outputs": [],
+      "source": [
+        "lunch = root.find(\"lunch\")\n",
+        "print(lunch)\n",
+        "print(lunch.get(\"hours\"))\n",
+        "print(lunch.keys())\n",
+        "print(lunch.items())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "c948abbe",
+      "metadata": {
+        "id": "c948abbe"
+      },
+      "outputs": [],
+      "source": [
+        "type(lunch)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "d8555787",
+      "metadata": {
+        "id": "d8555787"
+      },
+      "outputs": [],
+      "source": [
+        "print(root[0].findall('item'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "id": "aa91db27",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 224
+        },
+        "id": "aa91db27",
+        "outputId": "55de58c4-cd03-4a46-cd29-a3f82855346e"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-5-2c8c28c088e2>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mroot\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfindall\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'item'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mitem\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mroot\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfindall\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'item'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mitem\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'pride'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mitem\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'root' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "print(root[0].findall('item'))\n",
+        "for item in root[0].findall('item'):\n",
+        "    print(item.get('pride'))\n",
+        "    print(item.text)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "id": "6f8dbe0b",
+      "metadata": {
+        "id": "6f8dbe0b"
+      },
+      "source": [
+        "jason"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "1d433599",
+      "metadata": {
+        "id": "1d433599"
+      },
+      "outputs": [],
+      "source": [
+        "import json"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "01f3e5f8",
+      "metadata": {
+        "id": "01f3e5f8"
+      },
+      "outputs": [],
+      "source": [
+        "j1 = {\"name\":\"홍길동\", \"birth\": \"0525\", \"age\": 30}\n",
+        "j1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "82972b90",
+      "metadata": {
+        "id": "82972b90"
+      },
+      "outputs": [],
+      "source": [
+        "json.dumps(j1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "id": "120219f8",
+      "metadata": {
+        "id": "120219f8"
+      },
+      "outputs": [],
+      "source": [
+        "print(json.dumps(j1, indent=2))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "id": "71527c11",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "71527c11",
+        "outputId": "4ec8abe8-6691-474f-8cf9-d43c1b4cf003"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-8-4265af47b46c>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mjson\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdumps\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m3\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'json' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "json.dumps([1, 2, 3])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "id": "831143c0",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "id": "831143c0",
+        "outputId": "c823a0b6-3d5a-40e7-b10d-209b391d15ec"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-9-0e31d717927d>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mjson\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdumps\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m4\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m5\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m6\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'json' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "json.dumps((4, 5, 6))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 10,
+      "id": "a5559b88",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 206
+        },
+        "id": "a5559b88",
+        "outputId": "c2bb7106-a1ae-4cc5-a192-cfa2b87e1986"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-10-c9979fb6cef1>\u001b[0m in \u001b[0;36m<cell line: 2>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mj1\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m{\u001b[0m\u001b[0;34m\"name\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\"홍길동\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m\"birth\"\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0;34m\"0525\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m\"age\"\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0;36m30\u001b[0m\u001b[0;34m}\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0md1\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mjson\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdumps\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mj1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0mjson\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mloads\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0md1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'json' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "j1 = {\"name\":\"홍길동\", \"birth\": \"0525\", \"age\": 30}\n",
+        "d1 = json.dumps(j1)\n",
+        "json.loads(d1)"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3 (ipykernel)",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.13"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
